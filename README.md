@@ -1,2 +1,2 @@
-# zthack
-A Blog System base on JFinal&amp;BootStrap&amp;FreeMarker 
+# drip
+A Blog System base on spring boot&amp;layui&amp;FreeMarker 
