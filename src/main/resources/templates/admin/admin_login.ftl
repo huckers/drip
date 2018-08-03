@@ -70,7 +70,6 @@
                 }
             })
         })
-//        layer.msg('Hello World');
     });
 </script>
 </body>

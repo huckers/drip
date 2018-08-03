@@ -1,6 +1,7 @@
 package com.zthack.drip.controller;
 
 import com.zthack.drip.model.User;
+import com.zthack.drip.model.constent.DripConst;
 import com.zthack.drip.model.dto.JsonResponse;
 import com.zthack.drip.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 
 /**
+ * 后台管理控制层
+ *
  * Created by LiChao on 2018/8/1.
  */
 @Controller
@@ -20,11 +23,24 @@ public class AdminController {
     @Autowired
     private UserService userService;
 
+    /**
+     * 跳转到登录页面
+     *
+     * @return
+     */
     @GetMapping(value = {"", "/login"})
     public String login() {
         return "admin/admin_login";
     }
 
+    /**
+     * 登录验证
+     *
+     * @param username
+     * @param password
+     * @param session
+     * @return
+     */
     @PostMapping(value = "/doLogin")
     @ResponseBody
     public JsonResponse doLogin(@ModelAttribute("username") String username,
@@ -33,7 +49,7 @@ public class AdminController {
         User user = userService.findByUsername(username, password);
         if (null != user) {
             //登录成功
-            session.setAttribute("user_session", user);
+            session.setAttribute(DripConst.USER_SESSION_KEY, user);
             return new JsonResponse(1, "登录成功!");
         } else {
             //账号或密码错误
@@ -41,9 +57,16 @@ public class AdminController {
         }
     }
 
+    /**
+     * 后台管理首页
+     *
+     * @param session
+     * @param model
+     * @return
+     */
     @GetMapping(value = "/index")
     public String index (HttpSession session, Model model) {
-        User user = (User) session.getAttribute("user_session");
+        User user = (User) session.getAttribute(DripConst.USER_SESSION_KEY);
         //如果session存在，跳转到后台首页
         if (null != user) {
             model.addAttribute("user", user);
@@ -52,6 +75,12 @@ public class AdminController {
         return "redirect:/admin";
     }
 
+    /**
+     * 登出
+     *
+     * @param session
+     * @return
+     */
     @GetMapping(value = "/logout")
     public String logout (HttpSession session) {
         session.invalidate();
