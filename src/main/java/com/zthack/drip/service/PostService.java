@@ -18,4 +18,12 @@ public interface PostService {
      * @return
      */
     List<Post> findByFlag(Pageable pageable);
+
+    /**
+     * 根据id获取文章
+     *
+     * @param id
+     * @return
+     */
+    Post findPostById(Long id);
 }

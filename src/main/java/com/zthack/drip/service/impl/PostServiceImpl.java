@@ -34,4 +34,15 @@ public class PostServiceImpl implements PostService {
     public List<Post> findByFlag(Pageable pageable) {
         return postDao.findByFlag(true, pageable);
     }
+
+    /**
+     * 根据id获取文章
+     *
+     * @param id
+     * @return
+     */
+    @Override
+    public Post findPostById(Long id) {
+        return postDao.getOne(id);
+    }
 }

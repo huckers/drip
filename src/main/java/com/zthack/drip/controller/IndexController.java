@@ -2,6 +2,7 @@ package com.zthack.drip.controller;
 
 import com.zthack.drip.model.constent.DripConst;
 import com.zthack.drip.service.PostService;
+import com.zthack.drip.utils.DripUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -9,6 +10,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -43,6 +45,41 @@ public class IndexController {
         }
         Pageable pageable = PageRequest.of(page - 1, pageSize, sort);
         model.addAttribute("posts", postService.findByFlag(pageable));
-        return "themes/default/index";
+
+        return DripUtil.themePath(DripConst.INDEX);
+    }
+
+    /**
+     * 关于
+     *
+     * @param model
+     * @return
+     */
+    @GetMapping(value = "/about")
+    public String about (Model model) {
+
+        return DripUtil.themePath(DripConst.ABOUT);
+    }
+
+    /**
+     * 留言
+     *
+     * @param model
+     * @return
+     */
+    @GetMapping(value = "/message")
+    public String message (Model model) {
+
+        return DripUtil.themePath(DripConst.MESSAGE);
+    }
+
+    /**
+     * 评论
+     *
+     * @return
+     */
+    @GetMapping(value = "/comment")
+    public String comment (Model model) {
+        return DripUtil.themePath(DripConst.COMMENT);
     }
 }

@@ -1,6 +1,5 @@
 package com.zthack.drip.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -47,7 +46,6 @@ public class Comment implements Serializable {
      */
     @ManyToOne(targetEntity = Post.class, fetch = FetchType.EAGER)
     @JoinColumn(name = "post_id")
-    @JsonIgnore
     private Post post;
 
     /**
@@ -55,4 +53,16 @@ public class Comment implements Serializable {
      */
     @Column(name = "content")
     private String content;
+
+    /**
+     * 评论人昵称
+     */
+    @Column(name = "nick_name")
+    private String nickName;
+
+    /**
+     * 点赞数量
+     */
+    @Column(name = "like_count")
+    private Integer likeCount;
 }

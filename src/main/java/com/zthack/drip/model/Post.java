@@ -86,4 +86,10 @@ public class Post implements Serializable {
     @Column(name = "comment_count")
     private Integer commentCount;
 
+    /**
+     * 点赞数量
+     */
+    @Column(name = "like_count")
+    private Integer likeCount;
+
 }
