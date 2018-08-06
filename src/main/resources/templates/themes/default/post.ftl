@@ -20,7 +20,7 @@
                         <img src="/images/item.png" alt="">
                         <div class="count layui-clear">
                             <span class="pull-left">阅读 <em>${post.viewCount!0}</em></span>
-                            <span class="pull-right like"><i class="layui-icon layui-icon-praise"></i><em>${post.likeCount!0}</em></span>
+                            <span class="pull-right like" id="${post.id}"><i class="layui-icon layui-icon-praise"></i><em>${post.likeCount!0}</em></span>
                         </div>
                     </div>
                 </div>

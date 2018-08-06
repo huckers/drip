@@ -26,7 +26,7 @@
                             </div>
                             <div class="comment count">
                                 <a href="details.html#comment">评论(${post.commentCount!0})</a>
-                                <a href="javascript:;" class="like">点赞(${post.likeCount!0})</a>
+                                <a href="javascript:;" class="like" id = "${post.id}">点赞(${post.likeCount!0})</a>
                             </div>
                         </div>
                     </#list>

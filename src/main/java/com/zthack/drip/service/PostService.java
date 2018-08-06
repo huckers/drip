@@ -26,4 +26,11 @@ public interface PostService {
      * @return
      */
     Post findPostById(Long id);
+
+    /**
+     * 文章点赞
+     *
+     * @param id
+     */
+    Post postLike(Long id);
 }

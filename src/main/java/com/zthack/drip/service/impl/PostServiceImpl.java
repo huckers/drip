@@ -45,4 +45,19 @@ public class PostServiceImpl implements PostService {
     public Post findPostById(Long id) {
         return postDao.getOne(id);
     }
+
+    /**
+     * 文章点赞
+     *
+     * @param id
+     */
+    @Override
+    public Post postLike(Long id) {
+
+        Post post = postDao.getOne(id);
+        post.setLikeCount(post.getLikeCount() == null ? 1 : post.getLikeCount()+1);
+
+        postDao.save(post);
+        return post;
+    }
 }

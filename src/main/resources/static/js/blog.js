@@ -85,24 +85,31 @@ layui.define(['element', 'form','laypage','jquery','laytpl'],function(exports){
     },1000);    
   }
 
+  //文章点赞
   $(function () {
     $(".like").on('click',function () {
-     
-      if(!($(this).hasClass("layblog-this"))){
-        this.text = '已赞';
-        $(this).addClass('layblog-this');
-        $.tipsBox({
-          obj: $(this),
-          str: "+1",
-          callback: function () {
+      var this_ = $(this);
+      var id = this_.attr("id");
+      if(!(this_.hasClass("layblog-this"))){
+
+        $.get("/post/postLike/" + id, function(data) {
+          if (data.code == 1) {
+            this_.text("已赞("+ data.result +")");
+            this_.addClass('layblog-this');
+            $.tipsBox({
+              obj: this_,
+              str: "+1",
+              callback: function () {
+              }
+            });
+            niceIn(this_);
+            layer.msg('点赞成功', {
+              icon: 6
+              ,time: 1000
+            })
           }
-        });
-        niceIn($(this));
-        layer.msg('点赞成功', {
-          icon: 6
-          ,time: 1000
         })
-      } 
+      }
     });
   });
 
