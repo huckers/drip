@@ -42,11 +42,11 @@
     <div class="layui-side layui-bg-black">
         <div class="layui-side-scroll">
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+            <ul class="layui-nav layui-nav-tree"  lay-filter="drip-tree">
                 <li class="layui-nav-item layui-nav-itemed">
                     <a class="" href="javascript:;">文章管理</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">写文章</a></dd>
+                        <dd><a href="javascript:;" data-url="createPost">写文章</a></dd>
                         <dd><a href="javascript:;">文章列表</a></dd>
                     </dl>
                 </li>
@@ -71,7 +71,10 @@
 
     <div class="layui-body">
         <!-- 内容主体区域 -->
-        <div style="padding: 15px;">内容主体区域</div>
+        <div style="padding: 15px;">
+            <div class="layui-tab" lay-filter="demo"></div>
+            And So On
+        </div>
     </div>
 
     <div class="layui-footer">
@@ -84,7 +87,21 @@
     //JavaScript代码区域
     layui.use('element', function(){
         var element = layui.element;
+        var $ = layui.jquery;
 
+        element.on('nav(drip-tree)', function(elem){
+            var url = elem.attr('data-url');
+            console.log(url); //得到当前点击的DOM对象
+            if(!url){
+                return;
+            }
+            element.tabAdd('tab', {
+                title: '新建文章'
+                ,content: '选项卡的内容' //支持传入html
+                ,id: 'new-post'
+            });
+//            element.tabChange('tab', id);
+        });
     });
 </script>
 </body>
