@@ -14,7 +14,7 @@ public class DripUtil {
      * @param fileName
      * @return
      */
-    public static String themePath (String fileName) {
+    public static String themePath(String fileName) {
 
         if (StringUtils.isEmpty(DripConst.SETTINGS.get("theme_path"))) {
             return "themes/" + DripConst.THEME_DEFAULT + "/" + fileName;

@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  * 后台管理控制层
- *
+ * <p>
  * Created by LiChao on 2018/8/1.
  */
 @Controller
@@ -44,8 +44,8 @@ public class AdminController {
     @PostMapping(value = "/doLogin")
     @ResponseBody
     public JsonResponse doLogin(@ModelAttribute("username") String username,
-                                 @ModelAttribute("password") String password,
-                                 HttpSession session) {
+                                @ModelAttribute("password") String password,
+                                HttpSession session) {
         User user = userService.findByUsername(username, password);
         if (null != user) {
             //登录成功
@@ -65,7 +65,7 @@ public class AdminController {
      * @return
      */
     @GetMapping(value = "/index")
-    public String index (HttpSession session, Model model) {
+    public String index(HttpSession session, Model model) {
         User user = (User) session.getAttribute(DripConst.USER_SESSION_KEY);
         //如果session存在，跳转到后台首页
         if (null != user) {
@@ -82,7 +82,7 @@ public class AdminController {
      * @return
      */
     @GetMapping(value = "/logout")
-    public String logout (HttpSession session) {
+    public String logout(HttpSession session) {
         session.invalidate();
         return "redirect:/admin";
     }

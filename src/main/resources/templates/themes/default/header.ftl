@@ -10,14 +10,14 @@
             <div class="layui-form-item blog-sewrap">
                 <div class="layui-input-block blog-sebox">
                     <i class="layui-icon layui-icon-search"></i>
-                    <input type="text" name="title" lay-verify="title" autocomplete="off"  class="layui-input">
+                    <input type="text" name="title" lay-verify="title" autocomplete="off" class="layui-input">
                 </div>
             </div>
         </form>
         <div class="blog-nav pull-right">
             <ul class="layui-nav pull-left">
                 <li class="layui-nav-item layui-this"><a href="/index">INDEX</a></li>
-                <li class="layui-nav-item"><a href="/message">COMMENT</a></li>
+                <li class="layui-nav-item"><a href="/message">MESSAGE</a></li>
                 <li class="layui-nav-item"><a href="/about">ABOUT</a></li>
             </ul>
             <a href="/admin" class="personal pull-left">
@@ -32,7 +32,7 @@
     </div>
     <ul class="pop-nav" id="pop-nav">
         <li><a href="/index">INDEX</a></li>
-        <li><a href="/message">COMMENT</a></li>
+        <li><a href="/message">MESSAGE</a></li>
         <li><a href="/about">ABOUT</a></li>
     </ul>
 </div>

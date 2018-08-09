@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * 文章控制层
- *
+ * <p>
  * Created by LiChao on 2018/8/3.
  */
 @Controller
@@ -33,7 +33,7 @@ public class PostController {
      * @return
      */
     @GetMapping(value = "/{id}")
-    public String postById (@PathVariable(value = "id") Long id, Model model) {
+    public String postById(@PathVariable(value = "id") Long id, Model model) {
         Post post = postService.findPostById(id);
         model.addAttribute("post", post);
         return DripUtil.themePath(DripConst.POST);
@@ -47,8 +47,9 @@ public class PostController {
      */
     @GetMapping(value = "/postLike/{id}")
     @ResponseBody
-    public JsonResponse postLike (@PathVariable(value = "id") Long id) {
+    public JsonResponse postLike(@PathVariable(value = "id") Long id) {
         Post post = postService.postLike(id);
         return new JsonResponse(1, post.getLikeCount());
     }
+
 }

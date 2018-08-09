@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * 首页控制层
- *
+ * <p>
  * Created by LiChao on 2018/8/2.
  */
 @Controller
@@ -31,7 +31,7 @@ public class IndexController {
      * @return
      */
     @RequestMapping(value = {"", "/index"})
-    public String index (Model model) {
+    public String index(Model model) {
 
         //根据文章修改时间倒序排列
         Sort sort = new Sort(Sort.Direction.DESC, "modifyDate");
@@ -56,8 +56,7 @@ public class IndexController {
      * @return
      */
     @GetMapping(value = "/about")
-    public String about (Model model) {
-
+    public String about(Model model) {
         return DripUtil.themePath(DripConst.ABOUT);
     }
 
@@ -68,8 +67,7 @@ public class IndexController {
      * @return
      */
     @GetMapping(value = "/message")
-    public String message (Model model) {
-
+    public String message(Model model) {
         return DripUtil.themePath(DripConst.MESSAGE);
     }
 
@@ -79,7 +77,7 @@ public class IndexController {
      * @return
      */
     @GetMapping(value = "/comment")
-    public String comment (Model model) {
+    public String comment(Model model) {
         return DripUtil.themePath(DripConst.COMMENT);
     }
 }
