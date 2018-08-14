@@ -5,7 +5,7 @@
     <title>留言 - 水滴博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="${request.contextPath}/plugin/layui/css/layui.css">
-    <link rel="stylesheet" href="${request.contextPath}/css/mian.css">
+    <link rel="stylesheet" href="${request.contextPath}/css/main.css">
 </head>
 <body class="lay-blog">
     <#include "header.ftl">

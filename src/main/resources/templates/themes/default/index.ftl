@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>首页 - 水滴博客</title>
+    <title>首页 - ${settings.blog_name!''}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="${request.contextPath}/plugin/layui/css/layui.css">
-    <link rel="stylesheet" href="${request.contextPath}/css/mian.css">
+    <link rel="stylesheet" href="${request.contextPath}/css/main.css">
 </head>
 <body class="lay-blog">
 <#include "header.ftl">
@@ -13,7 +13,7 @@
     <div class="container">
         <div class="contar-wrap">
             <h4 class="item-title">
-                <p><i class="layui-icon layui-icon-speaker"></i>微言：<span>水滴石穿 集流成海!</span></p>
+                <p>微言：<i class="layui-icon layui-icon-speaker"></i><span>水滴石穿 集流成海!</span></p>
             </h4>
         <#if posts??>
             <#list posts as post>
