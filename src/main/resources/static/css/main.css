@@ -21,7 +21,6 @@
 .pull-left{
 	float: left !important;
 }
-
 /* ==============
 	自定义页面样式
    ============== */
@@ -233,6 +232,15 @@ body{
 
 .container-message textarea{
 	font-size:14px;
+	margin-bottom:20px;
+}
+.container-message input{
+	font-size:14px;
+	margin-bottom: 20px;
+}
+.container-message .layui-btn{
+	float: right;
+	margin-bottom: 20px;
 }
 .lay-blog .container-message .item-btn{
 	text-align: right;
@@ -244,8 +252,8 @@ body{
 .lay-blog .container-message .title{overflow:hidden;margin-bottom:10px;}
 .lay-blog .container-message .title .name{float: left; display: block; line-height: 38px; color:#787878;}
 .info-intr{line-height: 24px;}
-.lay-blog .container-message .title .info-img{float: right;color:#4b5a75;}
-.lay-blog .container-message .title .info-img i{font-size: 24px;padding-right: 5px;position: relative;top: 4px;} 
+.lay-blog .container-message .title .date{float: right;line-height: 38px; color:#787878;}
+/*.lay-blog .container-message .title .info-img i{font-size: 24px;padding-right: 5px;position: relative;top: 4px;} */
 .lay-blog .container-message .paging{text-align:center;padding-top:30px;}
 /* end message*/
 
@@ -259,7 +267,7 @@ body{
 .lay-blog .container-details .comt{
 	padding:0 20px;
 	font-size: 18px;
-	margin-bottom:90px;
+	margin-bottom:20px;
 }
 .lay-blog .container-details .count{
 	margin-top:35px;

@@ -1,7 +1,5 @@
 package com.zthack.drip.utils;
 
-import org.springframework.beans.factory.annotation.Value;
-
 /**
  * Created by LiChao on 2018/8/1.
  */
@@ -9,11 +7,9 @@ public class IDUtil {
 
     private static IdWorker instance = null;
 
-    @Value("${IdWorker.workerId}")
-    private static Integer workId;
+    private static Integer workId = 0;
 
-    @Value("${IdWorker.dataId}")
-    private static Integer dataId;
+    private static Integer dataId = 0;
 
     private IDUtil() {
 

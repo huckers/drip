@@ -3,7 +3,7 @@
         <h1 class="logo pull-left">
             <a href="/index">
                 <img src="${request.contextPath}/images/logo.png" alt="" class="logo-img">
-                <span class="logo-text" style="color: white">DRIP.</span>
+                <span class="logo-text" style="color: white">${settings.blog_name}</span>
             </a>
         </h1>
         <form class="layui-form blog-seach pull-left" action="">

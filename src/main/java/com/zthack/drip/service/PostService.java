@@ -1,5 +1,6 @@
 package com.zthack.drip.service;
 
+import com.zthack.drip.model.Comment;
 import com.zthack.drip.model.Post;
 import org.springframework.data.domain.Pageable;
 
@@ -9,6 +10,7 @@ import java.util.List;
  * Created by LiChao on 2018/8/1.
  */
 public interface PostService {
+
     List<Post> findAll();
 
     /**
@@ -33,4 +35,12 @@ public interface PostService {
      * @param id
      */
     Post postLike(Long id);
+
+    /**
+     * 保存评论
+     *
+     * @param comment
+     * @return
+     */
+    Boolean save(Comment comment);
 }

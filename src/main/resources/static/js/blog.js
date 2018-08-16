@@ -76,7 +76,7 @@ layui.define(['element', 'form','laypage','jquery','laytpl'],function(exports){
           });
         }
       });
-  })($); 
+  })($);
 
   function niceIn(prop){
     prop.find('i').addClass('niceIn');
@@ -120,7 +120,6 @@ layui.define(['element', 'form','laypage','jquery','laytpl'],function(exports){
   $('#LAY-msg-box').on('click', '.info-img', function(){
     $(this).addClass('layblog-this');
   })
-
 
   // end点赞图标变身
 

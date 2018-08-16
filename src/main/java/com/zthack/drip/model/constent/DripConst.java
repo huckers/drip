@@ -49,4 +49,15 @@ public class DripConst {
      * 留言
      */
     public static String MESSAGE = "message";
+
+    /**
+     * json成功代码
+     */
+    public static Integer RES_SUCCESS = 1;
+
+    /**
+     * json失败代码
+     */
+    public static Integer RES_FAIL = 0;
+
 }

@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Drip管理登录</title>
     <link rel="stylesheet" href="${request.contextPath}/plugin/layui/css/layui.css">
-    <link rel="stylesheet" href="${request.contextPath}/css/main.css">
     <link rel="stylesheet" href="${request.contextPath}/css/admin.css">
     <link rel="stylesheet" href="${request.contextPath}/css/login.css">
 </head>
@@ -13,8 +12,9 @@
 <div class="layadmin-user-login layadmin-user-display-show" id="LAY-user-login" style="display: none">
     <div class="layadmin-user-login-main">
         <div class="layadmin-user-login-box layadmin-user-login-header">
-            <h2>DripAdmin</h2>
-            <p>Drip水滴博客管理系统</p>
+            <img src="./images/logo.png" height="100px">
+            <#--<h2>DRIP ADMIN</h2>-->
+            <#--<p>Drip水滴博客管理系统</p>-->
         </div>
         <div class="layadmin-user-login-box layadmin-user-login-body layui-form">
             <div class="layui-form-item">

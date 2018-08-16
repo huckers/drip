@@ -50,10 +50,10 @@ public class AdminController {
         if (null != user) {
             //登录成功
             session.setAttribute(DripConst.USER_SESSION_KEY, user);
-            return new JsonResponse(1, "登录成功!");
+            return new JsonResponse(DripConst.RES_SUCCESS, "登录成功!");
         } else {
             //账号或密码错误
-            return new JsonResponse(1, "账号或密码错误!");
+            return new JsonResponse(DripConst.RES_FAIL, "账号或密码错误!");
         }
     }
 

@@ -1,12 +1,16 @@
 package com.zthack.drip.service.impl;
 
+import com.zthack.drip.dao.CommentDao;
 import com.zthack.drip.dao.PostDao;
+import com.zthack.drip.model.Comment;
 import com.zthack.drip.model.Post;
 import com.zthack.drip.service.PostService;
+import com.zthack.drip.utils.IDUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -17,6 +21,9 @@ public class PostServiceImpl implements PostService {
 
     @Autowired
     private PostDao postDao;
+
+    @Autowired
+    private CommentDao commentDao;
 
 
     @Override
@@ -43,7 +50,11 @@ public class PostServiceImpl implements PostService {
      */
     @Override
     public Post findPostById(Long id) {
-        return postDao.getOne(id);
+        Post one = postDao.getOne(id);
+        //阅读量+1
+        one.setViewCount(one.getViewCount()+1);
+        Post post = postDao.save(one);
+        return post;
     }
 
     /**
@@ -59,5 +70,26 @@ public class PostServiceImpl implements PostService {
 
         postDao.save(post);
         return post;
+    }
+
+    /**
+     * 保存评论
+     *
+     * @param comment
+     * @return
+     */
+    @Override
+    public Boolean save(Comment comment) {
+        comment.setCreateDate(new Date());
+        comment.setModifyDate(new Date());
+        comment.setLikeCount(0);
+        comment.setId(IDUtil.getId());
+        try {
+            commentDao.save(comment);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 }
