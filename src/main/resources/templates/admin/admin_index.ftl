@@ -26,6 +26,7 @@
                     <dd><a href="">授权管理</a></dd>
                 </dl>
             </li>
+            <li class="layui-nav-item"><a href="/" target="_blank">前台首页</a></li>
         </ul>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
