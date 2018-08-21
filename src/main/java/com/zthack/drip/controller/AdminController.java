@@ -87,4 +87,9 @@ public class AdminController {
         return "redirect:/admin";
     }
 
+    @GetMapping(value = "/post/list")
+    public String articles() {
+        return "admin/post/post_list";
+    }
+
 }

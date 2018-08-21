@@ -75,18 +75,18 @@
 
     <div class="layui-body">
         <!-- 内容主体区域 -->
-        <div style="padding: 15px;">
-            <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
-                <ul class="layui-tab-title">
-                    <li class="layui-this">网站设置</li>
-                    <li>用户管理</li>
-                    <li>权限分配</li>
-                    <li>商品管理</li>
-                    <li>订单管理</li>
-                </ul>
-                <div class="layui-tab-content"></div>
-            </div>
-        </div>
+        <#--<div style="padding: 15px;">-->
+            <#--<div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">-->
+                <#--<ul class="layui-tab-title">-->
+                    <#--<li class="layui-this">网站设置</li>-->
+                    <#--<li>用户管理</li>-->
+                    <#--<li>权限分配</li>-->
+                    <#--<li>商品管理</li>-->
+                    <#--<li>订单管理</li>-->
+                <#--</ul>-->
+                <#--<div class="layui-tab-content"></div>-->
+            <#--</div>-->
+        <#--</div>-->
     </div>
 
     <div class="layui-footer">
@@ -101,19 +101,61 @@
         var element = layui.element;
         var $ = layui.jquery;
 
-        element.on('nav(drip-tree)', function(elem){
-            var url = elem.attr('data-url');
-            console.log(url); //得到当前点击的DOM对象
-            if(!url){
-                return;
-            }
+//        element.on('nav(drip-tree)', function(elem){
+//            var url = elem.attr('data-url');
+//            console.log(url); //得到当前点击的DOM对象
+//            if(!url){
+//                return;
+//            }
+        $('.layui-nav dd').click(function (event) {
+            console.log(1);
             element.tabAdd('tab', {
                 title: '新建文章'
-                ,content: '选项卡的内容' //支持传入html
+                ,content: '<iframe tab-id="new-post" frameborder="0" src="post/list" scrolling="yes" class="this"></iframe>' //支持传入html
                 ,id: 'new-post'
             });
+
+        })
 //            element.tabChange('tab', id);
-        });
+//        });
+
+
+        //Tab触发事件：增加、删除、切换
+        var tab = {
+            tabAdd: function (title, url, id) {
+                //判断当前id的元素是否存在于tab中
+                var li = $("#Tab li[lay-id=" + id + "]").length;
+                if (li > 0) {
+                    //Tab已经存在，直接切换到指定Tab项
+                    element.tabChange("Tab", id);
+                } else {
+                    //该id不存在，新增一个Tab项
+                    element.tabAdd("Tab", {
+                        title: title,
+                        content: '<iframe tab-id="' + id + '" frameborder="0" src="' + url + '" scrolling="yes" class="this"></iframe>',
+                        id: id
+                    });
+                    //当前窗口内容
+//                    setStorageMenu(title, url, id);
+
+                }
+                $("#one").find("i").remove();
+            },
+            tabDelete: function (id) {
+                element.tabDelete("Tab", id); //删除
+//                removeStorageMenu(id);
+            },
+            tabChange: function (id) {
+                //切换到指定Tab项
+                element.tabChange("Tab", id);
+            },
+            tabDeleteAll: function (ids) { //删除所有
+                $.each(ids, function (i, item) {
+                    element.tabDelete("Tab", item);
+                })
+//                sessionStorage.removeItem('menu');
+            }
+        };
     });
 </script>
 </body>
