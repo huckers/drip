@@ -77,7 +77,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="./admin/user/list.html">
+                        <a _href="${request.contextPath}/admin/user/list">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>会员列表</cite>
 
@@ -85,9 +85,8 @@
                     </li>
                     <li>
                         <a href="javascript:;">
-                            <i class="iconfont">&#xe70b;</i>
+                            <i class="iconfont">&#xe6a7;</i>
                             <cite>会员管理</cite>
-                            <i class="iconfont nav_right">&#xe697;</i>
                         </a>
                     </li>
                 </ul>
