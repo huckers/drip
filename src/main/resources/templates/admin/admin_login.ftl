@@ -1,63 +1,56 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Drip管理登录</title>
-    <link rel="stylesheet" href="${request.contextPath}/plugin/layui/css/layui.css">
-    <link rel="stylesheet" href="${request.contextPath}/css/admin.css">
-    <link rel="stylesheet" href="${request.contextPath}/css/login.css">
+    <meta charset="UTF-8">
+    <title>管理员登录</title>
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="stylesheet" href="${request.contextPath}/css/font.css">
+    <link rel="stylesheet" href="${request.contextPath}/css/weadmin.css">
+    <script src="${request.contextPath}/plugin/layui/layui.js" charset="utf-8"></script>
+
 </head>
-<body>
-<div class="layadmin-user-login layadmin-user-display-show" id="LAY-user-login" style="display: none">
-    <div class="layadmin-user-login-main">
-        <div class="layadmin-user-login-box layadmin-user-login-header">
-            <img src="./images/logo.png" height="100px">
-            <#--<h2>DRIP ADMIN</h2>-->
-            <#--<p>Drip水滴博客管理系统</p>-->
+<body class="login-bg">
+
+<div class="login">
+    <div class="message">${settings.blog_name}-管理登录</div>
+    <div id="darkbannerwrap"></div>
+
+    <form method="post" class="layui-form" >
+        <input name="username" placeholder="用户名"  type="text" lay-verify="required" class="layui-input" >
+        <hr class="hr15">
+        <input name="password" lay-verify="required" placeholder="密码"  type="password" class="layui-input">
+        <hr class="hr15">
+        <input class="loginin" value="登录" lay-submit lay-filter="login" style="width:100%;" type="submit">
+        <hr class="hr20" >
+        <div>
+            前端静态展示，请随意输入，即可登录。
         </div>
-        <div class="layadmin-user-login-box layadmin-user-login-body layui-form">
-            <div class="layui-form-item">
-                <label class="layadmin-user-login-icon layui-icon layui-icon-username"
-                       for="LAY-user-login-username"></label>
-                <input type="text" name="username" id="LAY-user-login-username" lay-verify="required" placeholder="用户名"
-                       class="layui-input">
-            </div>
-            <div class="layui-form-item">
-                <label class="layadmin-user-login-icon layui-icon layui-icon-password"
-                       for="LAY-user-login-password"></label>
-                <input type="password" name="password" id="LAY-user-login-password" lay-verify="required"
-                       placeholder="密码" class="layui-input">
-            </div>
-            <div class="layui-form-item" style="margin-bottom: 20px;">
-                <input type="checkbox" name="remember" lay-skin="primary" title="记住密码">
-                <div class="layui-unselect layui-form-checkbox" lay-skin="primary"><span>记住密码</span><i
-                        class="layui-icon layui-icon-ok"></i></div>
-                <a lay-href="/user/forget" class="layadmin-user-jump-change layadmin-link" style="margin-top: 7px;">忘记密码？</a>
-            </div>
-            <div class="layui-form-item">
-                <button class="layui-btn layui-btn-fluid" lay-submit="" lay-filter="LAY-user-login-submit">登 入</button>
-            </div>
-        </div>
-    </div>
-    <div class="layui-trans layadmin-user-login-footer">
-        <p>© 2018 <a href="http://www.zthack.com/" target="_blank">zthack.com</a></p>
-    </div>
+    </form>
 </div>
-<script src="${request.contextPath}/plugin/layui/layui.js">
-</script>
-<script>
-    //一般直接写在一个js文件中
-    layui.use(['layer', 'form'], function () {
-        var layer = layui.layer
-                , form = layui.form
+
+<script type="text/javascript">
+
+    layui.extend({
+        admin: '{/}./js/admin'
+    });
+    layui.use(['form','admin'], function(){
+        var form = layui.form
+                ,admin = layui.admin
                 , $ = layui.jquery;
-
-        form.render();
-
-        form.on("submit(LAY-user-login-submit)", function (obj) {
-            var username = $("#LAY-user-login-username").val();
-            var password = $("#LAY-user-login-password").val();
+        // layer.msg('玩命卖萌中', function(){
+        //   //关闭后的操作
+        //   });
+        //监听提交
+        form.on('submit(login)', function(data){
+            // alert(888)
+//            layer.msg(JSON.stringify(data.field),function(){
+//                location.href='./index.html'
+//            });
+            var username = $("[name='username']").val();
+            var password = $("[name='password']").val();
             $.ajax({
                 url: '${request.contextPath}/admin/doLogin',
                 type: 'post',
@@ -73,8 +66,10 @@
                     }
                 }
             })
-        })
+            return false;
+        });
     });
 </script>
+<!-- 底部结束 -->
 </body>
 </html>

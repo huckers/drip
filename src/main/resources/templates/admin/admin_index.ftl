@@ -1,162 +1,183 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>管理面板</title>
-    <link rel="stylesheet" href="${request.contextPath}/plugin/layui/css/layui.css">
+    <meta charset="UTF-8">
+    <title>后台管理-${settings.blog_name}管理系统 V1.0</title>
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="stylesheet" href="${request.contextPath}/css/font.css">
+    <link rel="stylesheet" href="${request.contextPath}/css/weadmin.css">
+    <script type="text/javascript" src="${request.contextPath}/plugin/layui/layui.js" charset="utf-8"></script>
+
 </head>
-<body class="layui-layout-body">
-<div class="layui-layout layui-layout-admin">
-    <div class="layui-header">
-        <div class="layui-logo">
-            <img src="/images/logo.png" height="50px">
-            Drip控制台
-        </div>
-        <!-- 头部区域（可配合layui已有的水平导航） -->
-        <ul class="layui-nav layui-layout-left">
-            <li class="layui-nav-item"><a href="">控制台</a></li>
-            <li class="layui-nav-item"><a href="">系统管理</a></li>
-            <li class="layui-nav-item"><a href="">用户</a></li>
-            <li class="layui-nav-item">
-                <a href="javascript:;">其它系统</a>
-                <dl class="layui-nav-child">
-                    <dd><a href="">邮件管理</a></dd>
-                    <dd><a href="">消息管理</a></dd>
-                    <dd><a href="">授权管理</a></dd>
-                </dl>
-            </li>
-            <li class="layui-nav-item"><a href="/" target="_blank">前台首页</a></li>
-        </ul>
-        <ul class="layui-nav layui-layout-right">
-            <li class="layui-nav-item">
+
+<body>
+<!-- 顶部开始 -->
+<div class="container">
+    <div class="logo">
+        <#--<img src="/images/logo.png" height="50px">-->
+        <a href="/">${settings.blog_name}管理系统</a>
+    </div>
+    <div class="left_open">
+        <i title="展开左侧栏" class="iconfont">&#xe699;</i>
+    </div>
+    <ul class="layui-nav left fast-add" lay-filter="">
+        <li class="layui-nav-item">
+            <a href="javascript:;">+新增</a>
+            <dl class="layui-nav-child">
+                <!-- 二级菜单 -->
+                <dd>
+                    <a onclick="WeAdminShow('资讯','https://www.youfa365.com/')"><i class="iconfont">&#xe6a2;</i>资讯</a>
+                </dd>
+                <dd>
+                    <a onclick="WeAdminShow('图片','http://www.baidu.com')"><i class="iconfont">&#xe6a8;</i>图片</a>
+                </dd>
+                <dd>
+                    <a onclick="WeAdminShow('用户','https://www.youfa365.com/')"><i class="iconfont">&#xe6b8;</i>用户</a>
+                </dd>
+            </dl>
+        </li>
+    </ul>
+    <ul class="layui-nav right" lay-filter="">
+        <li class="layui-nav-item">
+            <a href="javascript:;">Admin</a>
+            <dl class="layui-nav-child">
+                <!-- 二级菜单 -->
+                <dd>
+                    <a onclick="WeAdminShow('个人信息','http://www.baidu.com')">个人信息</a>
+                </dd>
+                <dd>
+                    <a onclick="WeAdminShow('切换帐号','./login.html')">切换帐号</a>
+                </dd>
+                <dd>
+                    <a class="loginout" href="login.html">退出</a>
+                </dd>
+            </dl>
+        </li>
+        <li class="layui-nav-item to-index">
+            <a href="/">前台首页</a>
+        </li>
+    </ul>
+
+</div>
+<!-- 顶部结束 -->
+<!-- 中部开始 -->
+<!-- 左侧菜单开始 -->
+<div class="left-nav">
+    <div id="side-nav">
+        <ul id="nav">
+            <li>
                 <a href="javascript:;">
-                    <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-                    ${user.username}
+                    <i class="iconfont">&#xe6b8;</i>
+                    <cite>会员管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
                 </a>
-                <dl class="layui-nav-child">
-                    <dd><a href="">基本资料</a></dd>
-                    <dd><a href="">安全设置</a></dd>
-                </dl>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="./admin/user/list.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>会员列表</cite>
+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <i class="iconfont">&#xe70b;</i>
+                            <cite>会员管理</cite>
+                            <i class="iconfont nav_right">&#xe697;</i>
+                        </a>
+                    </li>
+                </ul>
             </li>
-            <li class="layui-nav-item"><a href="${request.contextPath}/admin/logout">退了</a></li>
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe705;</i>
+                    <cite>文章管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="${request.contextPath}/admin/post/list">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>文章列表</cite>
+                        </a>
+                    </li>
+                    <li>
+                        <a _href="./pages/article/category.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>分类管理</cite>
+                        </a>
+                    </li>
+                </ul>
+            </li>
         </ul>
-    </div>
-
-    <div class="layui-side layui-bg-black">
-        <div class="layui-side-scroll">
-            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-            <ul class="layui-nav layui-nav-tree"  lay-filter="drip-tree">
-                <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:;">文章管理</a>
-                    <dl class="layui-nav-child">
-                        <dd><a href="javascript:;" data-url="createPost">写文章</a></dd>
-                        <dd><a href="javascript:;">文章列表</a></dd>
-                    </dl>
-                </li>
-                <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:;">分类管理</a>
-                    <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">新增分类</a></dd>
-                        <dd><a href="javascript:;">分类列表</a></dd>
-                    </dl>
-                </li>
-                <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:;">评论管理</a>
-                    <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">评论列表</a></dd>
-                    </dl>
-                </li>
-                <li class="layui-nav-item"><a href="">基础设置</a></li>
-                <li class="layui-nav-item"><a href="">广告设置</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="layui-body">
-        <!-- 内容主体区域 -->
-        <#--<div style="padding: 15px;">-->
-            <#--<div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">-->
-                <#--<ul class="layui-tab-title">-->
-                    <#--<li class="layui-this">网站设置</li>-->
-                    <#--<li>用户管理</li>-->
-                    <#--<li>权限分配</li>-->
-                    <#--<li>商品管理</li>-->
-                    <#--<li>订单管理</li>-->
-                <#--</ul>-->
-                <#--<div class="layui-tab-content"></div>-->
-            <#--</div>-->
-        <#--</div>-->
-    </div>
-
-    <div class="layui-footer">
-        <!-- 底部固定区域 -->
-        © zthack.com - 底部固定区域
     </div>
 </div>
-<script src="${request.contextPath}/plugin/layui/layui.js"></script>
-<script>
-    //JavaScript代码区域
-    layui.use('element', function(){
-        var element = layui.element;
-        var $ = layui.jquery;
-
-//        element.on('nav(drip-tree)', function(elem){
-//            var url = elem.attr('data-url');
-//            console.log(url); //得到当前点击的DOM对象
-//            if(!url){
-//                return;
+<!-- <div class="x-slide_left"></div> -->
+<!-- 左侧菜单结束 -->
+<!-- 右侧主体开始 -->
+<div class="page-content">
+    <div class="layui-tab tab" lay-filter="wenav_tab" id="WeTabTip" lay-allowclose="true">
+        <ul class="layui-tab-title" id="tabName">
+            <li>我的桌面</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <iframe src='/pages/welcome.html' frameborder="0" scrolling="yes" class="weIframe"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="page-content-bg"></div>
+<!-- 右侧主体结束 -->
+<!-- 中部结束 -->
+<!-- 底部开始 -->
+<div class="footer">
+    <div class="copyright">Copyright ©2018 ${settings.blog_name} All Rights Reserved</div>
+</div>
+<!-- 底部结束 -->
+<script type="text/javascript">
+    //			layui扩展模块的两种加载方式-示例
+    //		    layui.extend({
+    //			  admin: '{/}../../static/js/admin' // {/}的意思即代表采用自有路径，即不跟随 base 路径
+    //			});
+    //			//使用拓展模块
+    //			layui.use('admin', function(){
+    //			  var admin = layui.admin;
+    //			});
+    layui.config({
+        base: '/js/'
+        ,version: '101100'
+    }).use('admin');
+//    layui.use(['jquery','admin'], function(){
+//        var $ = layui.jquery;
+//        $(function(){
+//            var login = JSON.parse(localStorage.getItem("login"));
+//            if(login){
+//                if(login=0){
+//                    window.location.href='./login.html';
+//                    return false;
+//                }else{
+//                    return false;
+//                }
+//            }else{
+//                window.location.href='./login.html';
+//                return false;
 //            }
-        $('.layui-nav dd').click(function (event) {
-            console.log(1);
-            element.tabAdd('tab', {
-                title: '新建文章'
-                ,content: '<iframe tab-id="new-post" frameborder="0" src="post/list" scrolling="yes" class="this"></iframe>' //支持传入html
-                ,id: 'new-post'
-            });
-
-        })
-//            element.tabChange('tab', id);
 //        });
+//    });
 
-
-        //Tab触发事件：增加、删除、切换
-        var tab = {
-            tabAdd: function (title, url, id) {
-                //判断当前id的元素是否存在于tab中
-                var li = $("#Tab li[lay-id=" + id + "]").length;
-                if (li > 0) {
-                    //Tab已经存在，直接切换到指定Tab项
-                    element.tabChange("Tab", id);
-                } else {
-                    //该id不存在，新增一个Tab项
-                    element.tabAdd("Tab", {
-                        title: title,
-                        content: '<iframe tab-id="' + id + '" frameborder="0" src="' + url + '" scrolling="yes" class="this"></iframe>',
-                        id: id
-                    });
-                    //当前窗口内容
-//                    setStorageMenu(title, url, id);
-
-                }
-                $("#one").find("i").remove();
-            },
-            tabDelete: function (id) {
-                element.tabDelete("Tab", id); //删除
-//                removeStorageMenu(id);
-            },
-            tabChange: function (id) {
-                //切换到指定Tab项
-                element.tabChange("Tab", id);
-            },
-            tabDeleteAll: function (ids) { //删除所有
-                $.each(ids, function (i, item) {
-                    element.tabDelete("Tab", item);
-                })
-//                sessionStorage.removeItem('menu');
-            }
-        };
-    });
 </script>
 </body>
+<!--Tab菜单右键弹出菜单-->
+<ul class="rightMenu" id="rightMenu">
+    <li data-type="fresh">刷新</li>
+    <li data-type="current">关闭当前</li>
+    <li data-type="other">关闭其它</li>
+    <li data-type="all">关闭所有</li>
+</ul>
+
 </html>
