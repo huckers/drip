@@ -1,5 +1,6 @@
 package com.zthack.drip.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -9,6 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
+ * 文章
  * Created by LiChao on 2018/7/24.
  */
 @Data
@@ -91,5 +93,13 @@ public class Post implements Serializable {
      */
     @Column(name = "like_count")
     private Integer likeCount;
+
+    /**
+     * 所属分类
+     */
+    @ManyToOne(targetEntity = Category.class, fetch = FetchType.EAGER)
+    @JoinColumn(name = "cate_id")
+    @JsonIgnore
+    private Category cate;
 
 }

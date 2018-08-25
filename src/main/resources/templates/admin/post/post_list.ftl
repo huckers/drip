@@ -52,10 +52,10 @@
             文章搜索：
             <div class="layui-input-inline">
                 <select name="cateid">
-                    <option>请选择分类</option>
-                    <option>文章</option>
-                    <option>会员</option>
-                    <option>权限</option>
+                    <option value="">请选择分类</option>
+                    <#list cates as cate>
+                        <option value="${cate.id}">${cate.cateName}</option>
+                    </#list>
                 </select>
             </div>
             <div class="layui-inline">
@@ -113,11 +113,12 @@
     layui.extend({
         admin: '/js/admin'
     });
-    layui.use(['table', 'jquery', 'form', 'admin'], function () {
+    layui.use(['table', 'jquery', 'form', 'admin', 'laydate'], function () {
         var table = layui.table,
                 $ = layui.jquery,
                 form = layui.form,
-                admin = layui.admin;
+                admin = layui.admin,
+                laydate = layui.laydate;
 
         table.render({
             elem: '#articleList',
@@ -236,6 +237,17 @@
                 });
             });
         }
+
+        //时间选择
+        laydate.render({
+            elem: '#start'
+            ,type: 'datetime'
+        });
+
+        laydate.render({
+            elem: '#end'
+            ,type: 'datetime'
+        });
 
     });
 
