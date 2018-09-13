@@ -1,6 +1,5 @@
 package com.zthack.drip.controller;
 
-import com.zthack.drip.model.Category;
 import com.zthack.drip.model.User;
 import com.zthack.drip.model.constent.DripConst;
 import com.zthack.drip.model.dto.JsonResponse;
@@ -12,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 /**
  * 后台管理控制层
@@ -35,7 +33,12 @@ public class AdminController {
      * @return
      */
     @GetMapping(value = {"", "/login"})
-    public String login() {
+    public String login(HttpSession session) {
+        User user = (User) session.getAttribute(DripConst.USER_SESSION_KEY);
+        //如果session存在，跳转到后台首页
+        if (null != user) {
+            return "/admin/admin_index";
+        }
         return "admin/admin_login";
     }
 
