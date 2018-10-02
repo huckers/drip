@@ -133,7 +133,7 @@
                 }, {
                     field: 'createDate', title: '发布时间', sort: true
                 }, {
-                    field: 'cateName', title: '分类', sort: true
+                    field: 'cate', title: '分类', templet: '<div>{{d.cate.cateName}}</div>' //二级对象数据获取方法 field为对象名称 templet为属性名 固定用法
                 }, {
                     field: 'viewCount', title: '浏览量', sort: true
                 }, {

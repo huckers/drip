@@ -1,9 +1,11 @@
 package com.zthack.drip.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -31,12 +33,14 @@ public class Post implements Serializable {
      * 创建时间
      */
     @Column(name = "create_date")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createDate;
 
     /**
      * 修改时间
      */
     @Column(name = "modify_date")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date modifyDate;
 
     /**
