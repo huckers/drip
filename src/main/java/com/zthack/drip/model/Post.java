@@ -99,7 +99,6 @@ public class Post implements Serializable {
      */
     @ManyToOne(targetEntity = Category.class, fetch = FetchType.EAGER)
     @JoinColumn(name = "cate_id")
-    @JsonIgnore
     private Category cate;
 
 }

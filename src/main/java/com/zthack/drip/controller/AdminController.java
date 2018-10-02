@@ -1,10 +1,8 @@
 package com.zthack.drip.controller;
 
-import com.zthack.drip.model.Category;
 import com.zthack.drip.model.User;
 import com.zthack.drip.model.constent.DripConst;
 import com.zthack.drip.model.dto.JsonResponse;
-import com.zthack.drip.service.CategoryService;
 import com.zthack.drip.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 /**
  * 后台管理控制层
@@ -21,13 +18,10 @@ import java.util.List;
  */
 @Controller
 @RequestMapping(value = "/admin")
-public class AdminController {
+public class AdminController extends BaseController {
 
     @Autowired
     private UserService userService;
-
-    @Autowired
-    private CategoryService categoryService;
 
     /**
      * 跳转到登录页面
@@ -91,13 +85,6 @@ public class AdminController {
     public String logout(HttpSession session) {
         session.invalidate();
         return "redirect:/admin";
-    }
-
-    @GetMapping(value = "/post/list")
-    public String articles(Model model) {
-        //文章分类
-        model.addAttribute("cates", categoryService.findAll());
-        return "admin/post/post_list";
     }
 
 }

@@ -83,11 +83,11 @@
     <table class="layui-hide" id="articleList"></table>
 
 
+    <#--<script type="text/html" id="recommendTpl">-->
+        <#--<input type="checkbox" name="zzz" lay-skin="switch" lay-text="已推荐|未推荐" {{d.recommend}}>-->
+    <#--</script>-->
     <script type="text/html" id="recommendTpl">
-        <input type="checkbox" name="zzz" lay-skin="switch" lay-text="已推荐|未推荐" {{d.recommend}}>
-    </script>
-    <script type="text/html" id="topTpl">
-        <input type="checkbox" name="show" lay-skin="switch" lay-text="已置顶|未置顶" {{d.top}}>
+        <input type="checkbox" name="show" title="推荐" {{d.top}}>
     </script>
     <script type="text/html" id="reviewTpl">
         <!-- 这里的 checked 的状态只是演示 -->
@@ -131,38 +131,20 @@
                 }, {
                     field: 'title', title: '标题', templet: '#usernameTpl'
                 }, {
-                    field: 'date', title: '发布时间', sort: true
+                    field: 'createDate', title: '发布时间', sort: true
                 }, {
-                    field: 'category', title: '分类', sort: true
+                    field: 'cateName', title: '分类', sort: true
                 }, {
-                    field: 'sort', title: '排序', sort: true
+                    field: 'viewCount', title: '浏览量', sort: true
+                }, {
+                    field: 'likeCount', title: '点赞量', sort: true
                 }, {
                     field: 'recommend', title: '推荐', templet: '#recommendTpl', unresize: true
-                }, {
-                    field: 'top', title: '置顶', templet: '#topTpl', unresize: true
-                }, {
-                    field: 'review', title: '审核', templet: '#reviewTpl', unresize: true
                 }, {
                     field: 'operate', title: '操作', toolbar: '#operateTpl', unresize: true
                 }]
             ],
-            data: [{
-                "id": "1",
-                "title": "WeAdmin的第一个版本在不断地抽空完善学习中",
-                "date": "2018-02-03",
-                "category": "官方动态",
-                "sort": "1",
-                "recommend": "checked",
-                "top": "checked"
-            }, {
-                "id": "2",
-                "title": "WeAdmin的测试数据一二三四五六七",
-                "date": "2018-02-03",
-                "category": "新闻资讯",
-                "sort": "1",
-                "recommend": "",
-                "top": "checked"
-            }],
+            data: ${posts},
             event: true,
             page: true
         });
