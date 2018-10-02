@@ -29,7 +29,12 @@ public class AdminController extends BaseController {
      * @return
      */
     @GetMapping(value = {"", "/login"})
-    public String login() {
+    public String login(HttpSession session) {
+        User user = (User) session.getAttribute(DripConst.USER_SESSION_KEY);
+        //如果session存在，跳转到后台首页
+        if (null != user) {
+            return "/admin/admin_index";
+        }
         return "admin/admin_login";
     }
 
