@@ -13,6 +13,9 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 首页控制层
  * <p>
@@ -34,7 +37,7 @@ public class IndexController {
     public String index(Model model) {
 
         //根据文章修改时间倒序排列
-        Sort sort = new Sort(Sort.Direction.DESC, "modifyDate");
+        Sort sort = Sort.by(Sort.Direction.DESC, "modifyDate");
 
         Integer page = 1;
         //默认分页条数

@@ -54,6 +54,16 @@ public class User implements Serializable {
     private String password;
 
     /**
+     * 盐
+     */
+    @Column(name = "salt")
+    private String salt;
+
+
+    @Column(name = "available")
+    private Integer available;
+
+    /**
      * 邮箱
      */
     @Column(name = "email")

@@ -27,10 +27,6 @@ public class BaseController {
      * @return
      */
     public Boolean isLogin () {
-        if (null == this.getContextUser()) {
-            return false;
-        } else {
-            return true;
-        }
+        return this.getContextUser() != null;
     }
 }

@@ -8,4 +8,6 @@ import com.zthack.drip.model.User;
 public interface UserService {
 
     User findByUsername(String username, String password);
+
+    User findByUsername(String username);
 }
