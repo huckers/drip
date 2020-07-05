@@ -1,0 +1,23 @@
+spring:
+  # 数据库连接信息
+  datasource:
+    url: jdbc:mysql://localhost:3306/drip?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=true
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+  # spring-data-jpa配置
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  # freemarker配置
+  freemarker:
+    cache: false
+    charset: utf-8
+    check-template-location: true
+    expose-session-attributes: true
+    request-context-attribute: request
+    suffix: ftl
